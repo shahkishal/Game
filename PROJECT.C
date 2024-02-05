@@ -1,9 +1,214 @@
 #include<stdio.h>
 #include<conio.h>
 #include<graphics.h>
-#include<C:\TURBOC3\BIN\INSERT_I.c>
-#include<C:\TURBOC3\BIN\song.c>
+#include <stdio.h>
+#include <dos.h>
+
 int a=0,point=0,remain=5,stop=30,max=0,z=0;
+void my_sounds(void);
+
+int music(int pitch, int time)
+{
+sound(pitch);
+delay(time);
+nosound();
+return(0);
+}
+
+
+
+void my_sounds()
+ {
+      setcolor(9);
+      settextstyle(0,0,2);
+      outtextxy(255,195,"1");
+      music(130, 200);
+      delay(400);
+
+       setcolor(BLACK);
+      outtextxy(255,195,"1");
+       setcolor(RED);
+      outtextxy(255,195,"2");
+
+      music(145, 200);
+      delay(400);
+
+      setcolor(BLACK);
+      outtextxy(255,195,"2");
+       setcolor(YELLOW);
+      outtextxy(255,195,"3");
+
+      music(166, 200);
+      delay(400);
+
+       setcolor(BLACK);
+      outtextxy(255,195,"3");
+       setcolor(GREEN);
+      outtextxy(175,195,"!! START !!");
+	music(66, 200);
+      delay(200);
+       setcolor(BLACK);
+      outtextxy(175,195,"!! START !!");
+
+      settextstyle(0,0,1);
+
+
+ }
+void back_sound()
+ {
+      music(330, 50);
+
+ }
+void lost()
+{
+	music(66, 300);
+	delay(50);
+	music(45, 300);
+	delay(50);
+	music(30, 900);
+}
+void won()
+{
+	music(366, 100);
+	delay(50);
+	music(326, 100);
+	delay(50);
+	music(366, 100);
+	delay(50);
+	music(386, 500);
+}
+void hit()
+{
+	music(66,100);
+	music(45,100);
+	music(30,100);
+}
+
+struct BMP
+
+    {
+
+      char Type[2];                 //File type. Set to "BM".
+
+      unsigned long Size;           //Size in BYTES of the file.
+
+      unsigned long Reserved;      //Reserved. Set to zero.
+
+      unsigned long OffSet;        //Offset to the data.
+
+      unsigned long headsize;      //Size of rest of header. Set to 40.
+
+      unsigned long Width;         //Width of bitmap in pixels.
+
+      unsigned long Height;        //  Height of bitmap in pixels.
+
+      unsigned int  Planes;        //Number of Planes. Set to 1.
+
+      unsigned int  BitsPerPixel;  //Number of Bits per pixels.
+
+      unsigned long Compression;   //Compression. Usually set to 0.
+
+      unsigned long SizeImage;      //Size in bytes of the bitmap.
+
+      unsigned long XPixelsPreMeter;  //Horizontal pixels per meter.
+
+      unsigned long YPixelsPreMeter;  //Vertical pixels per meter.
+
+      unsigned long ColorsUsed;       //Number of colors used.
+
+      unsigned long ColorsImportant;  //Number of "important" colors.
+
+    };
+
+
+
+    int ShowBMP(int x, int y, char* FileName)
+
+    {
+
+	int b,a;
+
+	struct  BMP Obj;
+
+
+
+	unsigned char* Datas;
+
+	int in=0;
+
+	unsigned char c=0;
+
+	FILE * fp;
+
+
+
+	fp = fopen(FileName,"rb");
+
+	if(!fp){
+
+	printf("Error : Unable to open file ..");
+
+	exit(0);
+
+	}
+
+
+
+	fread(&Obj, sizeof(Obj), 1, fp);
+
+	if(Obj.BitsPerPixel!=4)  // This isn't a 16 color bmp we can read;
+
+	{
+
+	 fclose(fp);
+
+	 printf("Error : File format not supported ..");
+
+	 exit(0);
+
+	};
+
+	fseek(fp,Obj.OffSet,SEEK_SET);
+
+	Datas=(unsigned char*) calloc(Obj.Width/2+1, sizeof(unsigned char));
+
+	for(b=Obj.Height;b>=0;b--)
+
+	{
+
+	 fread(Datas, sizeof(unsigned char), Obj.Width/2, fp);
+
+	 c=0;
+
+	 in=0;
+
+	 for(a=0;a<=Obj.Width;a+=2)
+
+	 {
+
+	     c = (Datas[in] | 0x00) >>4;
+
+	     putpixel(a+x,b+y,c);
+
+	     c = (Datas[in] | 0xF0) & 0x0F;
+
+	     putpixel(a+1+x,b+y,c);
+
+	     in++;
+
+	 }
+
+	}
+
+	free (Datas);
+
+	fclose(fp);
+
+	return 1;
+
+    }
+///---img end
+
 
 void elements();
 void result1()
