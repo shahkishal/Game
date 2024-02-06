@@ -577,15 +577,15 @@ void elements()
 		setcolor(GREEN);
 		outtextxy(135,35,"!! Press Space to Shoot !!");
 	//wall
-	ShowBMP(0,430,"wall.BMP");
-	ShowBMP(256,430,"wall.BMP");
+	ShowBMP(0,430,"Archery_Game/wall.BMP");
+	ShowBMP(256,430,"Archery_Game/wall.BMP");
 	//img pillar
-	ShowBMP(393,379,"obj.BMP");
+	ShowBMP(393,379,"Archery_Game/obj.BMP");
 
 	//img
-	ShowBMP(400,143,"cgg_img2.BMP");
+	ShowBMP(400,143,"Archery_Game/cgg_img2.BMP");
 	//img moon
-	ShowBMP(570,3,"moon.BMP");
+	ShowBMP(570,3,"Archery_Game/moon.BMP");
 
 	setcolor(WHITE);
 	rectangle(385,0,535,50);
