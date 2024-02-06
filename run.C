@@ -312,7 +312,7 @@ void anime(int i)
 
 
 void arrow(int level)
-{    int i=0 , color,j=0;
+{    int i=0 , color;
 	while(1)
 	{
 
@@ -577,15 +577,15 @@ void elements()
 		setcolor(GREEN);
 		outtextxy(135,35,"!! Press Space to Shoot !!");
 	//wall
-	ShowBMP(0,430,"Archery/wall.BMP");
-	ShowBMP(256,430,"Archery/wall.BMP");
+	ShowBMP(0,430,"Game/wall.BMP");
+	ShowBMP(256,430,"Game/wall.BMP");
 	//img pillar
-	ShowBMP(393,379,"Archery/obj.BMP");
+	ShowBMP(393,379,"Game/obj.BMP");
 
 	//img
-	ShowBMP(400,143,"Archery/cgg_img2.BMP");
+	ShowBMP(400,143,"Game/cgg_img2.BMP");
 	//img moon
-	ShowBMP(570,3,"Archery/moon.BMP");
+	ShowBMP(570,3,"Game/moon.BMP");
 
 	setcolor(WHITE);
 	rectangle(385,0,535,50);
