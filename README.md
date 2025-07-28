@@ -32,3 +32,7 @@ Contributions are welcome! If you have any ideas for improvements, new features,
 
 Let the archery fun begin! 🚀
 
+> ⚠️ **Caution** ⚠️  
+> To ensure the project functions correctly, **you must place it in the following directory**:  
+> `C:\TURBOC3\Projects`
+
